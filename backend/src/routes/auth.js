@@ -9,9 +9,18 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import { generateKeyPairSync } from 'crypto';
 import nacl from 'tweetnacl';
-import { encodeBase64 } from 'tweetnacl-util';
 
 const router = express.Router();
+
+// Helper function to encode to base64
+const encodeBase64 = (buffer) => {
+  return Buffer.from(buffer).toString('base64');
+};
+
+// Helper function to decode from base64
+const decodeBase64 = (str) => {
+  return Buffer.from(str, 'base64');
+};
 
 // Configuration
 const RP_ID = process.env.RP_ID || 'localhost';
