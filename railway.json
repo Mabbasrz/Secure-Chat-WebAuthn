@@ -1,5 +1,10 @@
 {
   "build": {
-    "builder": "dockerfile"
+    "builder": "dockerfile",
+    "dockerfile": "Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "node src/index.js",
+    "restartPolicyMaxRetries": 5
   }
 }
