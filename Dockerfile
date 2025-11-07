@@ -9,8 +9,8 @@ ENV NODE_ENV=production \
 # Copy backend package files
 COPY backend/package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production && npm cache clean --force
+# Install dependencies (use npm install since no package-lock.json)
+RUN npm install --production && npm cache clean --force
 
 # Copy backend source code
 COPY backend/src ./src
