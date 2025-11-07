@@ -1,35 +1,47 @@
-# 🔐 **CrypTalk** - Secure Chat Platform
+<div align="center">
 
-![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
-![License](https://img.shields.io/badge/License-MIT-blue)
-![Built with](https://img.shields.io/badge/Built%20with-MERN%2B%2B-61dafb)
-![Security](https://img.shields.io/badge/Security-E2E%20Encrypted-success)
+# 🔐 CrypTalk
 
-**CrypTalk** is a next-generation encrypted messaging platform combining modern security (WebAuthn passwordless + NaCl E2E encryption) with seamless user experience.
+### *Where Privacy Meets Simplicity*
 
-**Tagline:** *"Where Privacy Meets Simplicity"*
+[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)](https://cryptalk-frontend.onrender.com)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license)
+[![Built with](https://img.shields.io/badge/Built%20with-MERN%20Stack-61dafb)](#tech-stack)
+[![Security](https://img.shields.io/badge/Security-E2E%20Encrypted-success)](#security)
 
-A modern real-time chat application featuring passwordless WebAuthn authentication and end-to-end encryption. Messages are encrypted client-side; the server never sees plaintext.
+**Next-generation encrypted messaging platform combining WebAuthn passwordless authentication with NaCl end-to-end encryption**
+
+[Live Demo](https://cryptalk-frontend.onrender.com) • [Documentation](#documentation) • [Features](#features) • [Security](#security)
+
+</div>
 
 ---
 
-## 🎯 Features
+## ✨ Features
 
-### Security First
-- ✅ **WebAuthn Passwordless Auth** — Biometric / security key login
-- ✅ **E2E Encryption** — Messages encrypted with NaCl (client-side only)
-- ✅ **Zero-Knowledge** — Server stores only ciphertext
-- ✅ **Rate Limiting** — DDoS/brute-force protection
-- ✅ **Helmet Security Headers** — OWASP best practices
-- ✅ **CORS Hardened** — Restricted to trusted origins
+### 🔒 Security First
+- **WebAuthn Passwordless Auth** - Biometric & security key login
+- **E2E Encryption** - Messages encrypted with NaCl (client-side only)
+- **Zero-Knowledge** - Server stores only ciphertext
+- **Rate Limiting** - DDoS/brute-force protection
+- **OWASP Compliant** - Security headers with Helmet
+- **CORS Hardened** - Restricted to trusted origins
 
-### Features
-- 🔐 Real-time encrypted messaging with Socket.IO
-- 👤 User profiles and presence indicators
-- 📱 Responsive mobile-friendly UI
-- 🚀 Production-ready deployment (Docker)
+### 💬 Communication
+- 🚀 Real-time messaging with Socket.IO
+- 👤 User profiles & presence indicators
+- 📱 Fully responsive mobile-friendly UI
+- 🎨 Modern glassmorphism design with animations
+- ✨ Smooth transitions & hover effects
+- 🎭 Floating particles & gradient backgrounds
+
+### 🛠️ Development
 - 🧪 Test suite with >80% coverage
 - 📊 GitHub Actions CI/CD
+- 🐳 Docker-ready deployment
+- 📚 Comprehensive documentation
+- 🔄 Hot reload development
+- 📦 Modular component architecture
 
 ---
 
@@ -37,21 +49,23 @@ A modern real-time chat application featuring passwordless WebAuthn authenticati
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  FRONTEND (React + Vite)                                │
-│  ├─ WebAuthn Registration/Login (biometric)            │
+│            FRONTEND (React + Vite + Tailwind)           │
+│  ├─ WebAuthn Registration/Login (biometric)             │
 │  ├─ NaCl Client-side Encryption                         │
-│  └─ Socket.IO Real-time Updates                         │
+│  ├─ Socket.IO Real-time Updates                         │
+│  └─ Glassmorphism UI with Animations                    │
 └────────────────┬────────────────────────────────────────┘
                  │ HTTPS + WSS
 ┌────────────────▼────────────────────────────────────────┐
-│  BACKEND (Node.js + Express)                            │
-│  ├─ WebAuthn Server (@simplewebauthn)                  │
+│           BACKEND (Node.js + Express)                   │
+│  ├─ WebAuthn Server (@simplewebauthn)                   │
 │  ├─ Socket.IO Relay (no decryption)                     │
+│  ├─ JWT Authentication                                   │
 │  └─ MongoDB Storage (encrypted blobs only)              │
 └────────────────┬────────────────────────────────────────┘
                  │
 ┌────────────────▼────────────────────────────────────────┐
-│  DATABASE (MongoDB)                                      │
+│                  DATABASE (MongoDB)                      │
 │  └─ Stores: encrypted messages, user credentials        │
 └─────────────────────────────────────────────────────────┘
 ```
@@ -94,58 +108,51 @@ docker-compose up --build
 
 # Services:
 # - Frontend: http://localhost:5173
-# - Backend API: http://localhost:5000
+# - Backend: http://localhost:5000
 # - MongoDB: mongodb://localhost:27017
 ```
 
 ---
 
-## 📋 Usage
+## 📖 Usage
 
-### 1. **Register with WebAuthn**
-- Click "Register"
+### 1️⃣ Register
+- Click "Sign up"
 - Enter username & email
-- Use your biometric / security key
-- System generates NaCl key pair (stored securely)
+- Use biometric or security key
+- System generates NaCl key pair
 
-### 2. **Login Passwordless**
+### 2️⃣ Login
 - Click "Login"
-- Use biometric / security key
-- JWT token issued (24h expiration)
+- Authenticate with biometric
+- JWT token issued (24h validity)
 
-### 3. **Send Encrypted Message**
-- Open chat with recipient
-- Type message
-- Message encrypted client-side with recipient's public key
-- Socket.IO sends ciphertext to server
-- Server relays to recipient
-- Recipient decrypts client-side only
-
-### 4. **Privacy**
-- Server never sees plaintext
-- Database stores only encrypted blobs
-- No password database (WebAuthn only)
-- Perfect forward secrecy (key material never shared)
+### 3️⃣ Chat
+- Select user to chat with
+- Type message (encrypted client-side)
+- Message sent via Socket.IO
+- Recipient decrypts locally
 
 ---
 
 ## 🔐 Security Model
 
-### Threat Model
+### Threat Mitigation
+
 | Threat | Mitigation |
-|--------|-----------|
+|--------|------------|
 | Password compromise | WebAuthn (passwordless) |
 | Server breach | E2E encryption (zero-knowledge) |
 | Message interception | TLS + NaCl encryption |
 | DDoS attacks | Rate limiting + Helmet |
 | CSRF attacks | Socket.IO origin verification |
-| XSS attacks | React context API (no localStorage secrets) |
+| XSS attacks | React (no localStorage secrets) |
 
 ### Assumptions
 - ✅ HTTPS/WSS in production
-- ✅ Users verify recipient identity out-of-band
-- ✅ Browser crypto APIs trusted (WebAuthn, WebCrypto)
-- ⚠️ Metadata (who talks to whom, timing) is visible to server
+- ✅ Users verify recipient identity
+- ✅ Browser crypto APIs trusted
+- ⚠️ Metadata visible to server (who/when)
 
 ---
 
@@ -154,134 +161,45 @@ docker-compose up --build
 ```bash
 # Backend tests
 cd backend
-npm test  # Jest with coverage
+npm test
 
 # Frontend tests
 cd frontend
-npm test  # Vitest
+npm test
 
-# Run all tests
+# Run all tests with coverage
 npm run test:all
 ```
 
-**Coverage targets:** >80% overall
+**Coverage:** >80% overall
 
 ---
 
-## 🐳 Docker & Deployment
-
-### Local Development
-```bash
-docker-compose up
-```
-
-### Production Deployment (Railway/Render)
-```bash
-# Build images
-docker build -t mabbasrz/secure-chat-backend ./backend
-docker build -t mabbasrz/secure-chat-frontend ./frontend
-
-# Push to registry
-docker push mabbasrz/secure-chat-backend
-docker push mabbasrz/secure-chat-frontend
-
-# Deploy on Railway/Render with docker-compose.yml
-```
-
-### Environment Variables
-```
-BACKEND:
-  MONGODB_URI=mongodb+srv://user:pass@cluster.mongodb.net/secure-chat
-  JWT_SECRET=<generate-strong-random-key>
-  FRONTEND_URL=https://your-frontend.vercel.app
-  RP_ID=your-domain.com
-  ORIGIN=https://your-backend.railway.app
-
-FRONTEND:
-  VITE_API_URL=https://your-backend.railway.app
-```
-
----
-
-## 📈 Performance & Metrics
-
-- **Message latency:** <100ms (Socket.IO)
-- **Encryption overhead:** <50ms per message
-- **DB query time:** <50ms (indexed queries)
-- **Docker image size:** 180MB (backend), 150MB (frontend)
-- **Concurrent connections:** 10K+ (with proper sizing)
-
----
-
-## 🔄 CI/CD Pipeline
-
-**GitHub Actions** (`.github/workflows/ci.yml`):
-1. ✅ Lint (ESLint)
-2. ✅ Test (Jest + Vitest)
-3. ✅ Build
-4. ✅ Security audit (npm audit)
-5. ✅ Deploy (on main branch push)
-
----
-
-## 📚 Technology Stack
+## 📚 Tech Stack
 
 | Layer | Technologies |
-|-------|--------------|
+|-------|-------------|
 | **Frontend** | React 18, Vite, Socket.IO, TweetNaCl.js, Tailwind CSS |
 | **Backend** | Node.js, Express, Socket.IO, @simplewebauthn |
 | **Database** | MongoDB, Mongoose |
-| **DevOps** | Docker, GitHub Actions, Railway |
+| **DevOps** | Docker, GitHub Actions, Render |
 | **Testing** | Jest, Vitest, Supertest, React Testing Library |
 | **Security** | Helmet, CORS, Rate-limiting, WebAuthn, NaCl |
 
 ---
 
-## 🔗 API Reference
+## 🌟 What's New
 
-### REST Endpoints
-
-#### Health Check
-```
-GET /api/health
-Response: { "status": "OK", "timestamp": "..." }
-```
-
-#### WebAuthn Registration
-```
-POST /api/auth/register/options
-Body: { "username": "john", "email": "john@example.com" }
-Response: { "challenge": "...", "userId": "..." }
-
-POST /api/auth/register/verify
-Body: { "username": "john", "attestationResponse": {...} }
-Response: { "token": "jwt..." }
-```
-
-#### WebAuthn Login
-```
-POST /api/auth/login/options
-Body: { "username": "john" }
-Response: { "challenge": "...", "allowCredentials": [...] }
-
-POST /api/auth/login/verify
-Body: { "username": "john", "assertionResponse": {...} }
-Response: { "token": "jwt...", "user": {...} }
-```
-
-### WebSocket Events
-
-#### Client → Server
-```javascript
-socket.emit('user-joined', { username, publicKey });
-socket.emit('send-message', { sender, receiver, encryptedMessage, nonce });
-```
-
-#### Server → Clients
-```javascript
-socket.on('user-joined', { username, timestamp });
-socket.on('receive-message', { sender, receiver, encryptedMessage, timestamp });
-```
+### v2.0.0 - Modern UI Overhaul
+- ✨ Glassmorphism design with backdrop blur
+- 🎨 Floating particle animations (50+ particles)
+- 🌈 Gradient orbs with blob animations
+- 💫 Smooth transitions & hover effects
+- 🎭 Modern purple-pink gradient theme
+- 📱 Enhanced mobile responsiveness
+- ⚡ Custom animations (float, blob, shake, glow)
+- 🎨 Custom gradient scrollbar
+- 💎 Professional UI/UX patterns
 
 ---
 
@@ -293,7 +211,7 @@ MIT License © 2025 Muzammil Abbas
 
 ## 🤝 Contributing
 
-Contributions welcome! Please follow:
+Contributions welcome! Please:
 1. Fork the repo
 2. Create feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit changes (`git commit -m 'feat: add amazing feature'`)
@@ -304,9 +222,8 @@ Contributions welcome! Please follow:
 
 ## 🐛 Issues & Support
 
-Found a bug? Have a question?
-- **GitHub Issues:** [Report here](https://github.com/mabbasrz/Secure-Chat-WebAuthn/issues)
-- **Security issues:** Please email security@mabbasrz.com (don't open public issue)
+- **Bug reports:** [Open issue](https://github.com/mabbasrz/Secure-Chat-WebAuthn/issues)
+- **Security issues:** Email security@mabbasrz.com (private)
 
 ---
 
@@ -314,17 +231,18 @@ Found a bug? Have a question?
 
 **Muzammil Abbas**
 - GitHub: [@mabbasrz](https://github.com/mabbasrz)
-- Portfolio: [mabbasrz.github.io](https://mabbasrz.github.io)
-- CrypTalk: [cryptalk.io](https://cryptalk.io)
+- Website: [mabbasrz.github.io](https://mabbasrz.github.io/)
 
 ---
 
-## ⭐ Show Your Support
+<div align="center">
+
+### ⭐ Show Your Support
 
 If this project helped you, please give it a ⭐ on GitHub!
 
----
+**CrypTalk** - *Where Privacy Meets Simplicity* 🔐
 
-*CrypTalk - Where Privacy Meets Simplicity. 🔐*  
-*Last updated: November 7, 2025*  
-*Status: Production Ready ✅*
+[![Deploy](https://img.shields.io/badge/Deploy%20Your%20Own-Success-brightgreen)](https://github.com/mabbasrz/Secure-Chat-WebAuthn/fork)
+
+</div>
