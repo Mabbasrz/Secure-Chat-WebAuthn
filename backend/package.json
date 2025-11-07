@@ -1,8 +1,7 @@
-// backend/package.json
 {
   "name": "secure-chat-backend",
   "version": "1.0.0",
-  "description": "Secure Chat with WebAuthn and E2E Encryption - Backend API",
+  "description": "CrypTalk Backend API - Enterprise-grade secure chat platform with passwordless WebAuthn authentication and end-to-end NaCl encryption. Zero-knowledge architecture ensuring complete message privacy.",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
