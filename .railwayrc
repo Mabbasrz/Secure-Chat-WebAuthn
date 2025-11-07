@@ -1,0 +1,12 @@
+{
+  "build": {
+    "builder": "dockerfile",
+    "dockerfile": "Dockerfile"
+  },
+  "deploy": {
+    "startCommand": "node src/index.js",
+    "restartPolicyMaxRetries": 5,
+    "healthCheckPath": "/",
+    "healthCheckInterval": 30
+  }
+}
