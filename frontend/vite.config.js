@@ -12,6 +12,9 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     minify: 'esbuild',  },
+    preview: {
+          allowedHosts: ['cryptalk-frontend.onrender.com'],
+        },
   define: {
     'process.env': {},
   },
