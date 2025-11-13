@@ -1,5 +1,11 @@
-# backend/Dockerfile
+# CrypTalk - Backend API Dockerfile
+# Production-ready Node.js server with WebAuthn and E2E encryption support
+
 FROM node:18-alpine
+
+LABEL maintainer="CrypTalk Team"
+LABEL description="CrypTalk Backend API - Secure chat platform with passwordless authentication"
+LABEL version="1.0.0"
 
 WORKDIR /app
 

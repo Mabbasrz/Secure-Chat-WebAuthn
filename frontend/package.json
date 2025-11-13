@@ -2,7 +2,7 @@
   "name": "secure-chat-frontend",
   "version": "1.0.0",
   "type": "module",
-  "description": "Secure Chat with WebAuthn and E2E Encryption - Frontend",
+  "description": "CrypTalk Frontend - Modern React-based secure messaging interface with client-side end-to-end encryption, WebAuthn biometric authentication, and real-time Socket.IO communication.",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
